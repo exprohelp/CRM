@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewBag.Title = "CommissionReport";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}    
+<style>
+    .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > td {
+        text-align: center;
+        border-top: 0;
+        border-color: #abaeb5;
+    }
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th {
+        border-color: #cdc4c4;
+        color: #4b5056;
+        background-color: #cdd191 !important;
+    }
+    .selected {
+        background: DodgerBlue !important;
+        color: #fff;
+    }
+
+    table thead th {
+        white-space: nowrap;
+        background: #e1dede !important;
+        color: 5e5757 !important;
+        padding: 2px !important;
+    }
+
+    table tbody td {
+        white-space: nowrap;
+    }
+
+    table {
+        /*overflow-y: auto;*/
+    }
+        table thead th {
+            z-index: 100;
+            position: sticky;
+            top: -2px;
+        }
+    .btn-tbl {
+        border: none;
+        padding: 1px 9px;
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
+    .flex {
+        display: flex !important;
+        align-items: center;
+    }
+
+    hr {
+        margin-top: 35px;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+    .fileinput.input-group {
+        display: flex;
+    }
+    .scroll {
+        width: 100%;
+        background: #fff;
+        overflow: overlay;
+        max-height: 450px;
+        display: block;
+    }
+    .panel-body {
+        /*box-shadow: 1px 1px 10px #d2d2d2;*/
+        border-radius: 10px;
+        padding: 5px 3px 0px 3px;
+        position: relative;
+    }
+    .note {
+        list-style: disc;
+        color: red;
+        font-size: 11px;
+        font-weight: bold;
+        background: #f7f7f7;
+        border:1px solid #d86c6c;
+    }
+    .bc {
+        border: 1px solid #00a65a;
+        border-radius: 0;
+    }    
+</style>
+<script src="~/Areas/Pharmacy/JsModule/CommissionReport.js"></script>
+<div id="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ml15">
+                    <div class="">
+                        <div class="panel">
+                            <div class="panel-heading" style="background:#d19a4a;padding:1px  10px;">
+                                <p class="text-white">Tele Commission Report</p>
+                            </div>
+                            <div class="panel-body" style="background:#fff;">
+                                <div class="col-xs-3">
+                                    <label>From </label>
+                                    <div class="form-group">
+                                        <input type="date" id="txtFrom" class="form-control" style="margin-left:-9px;" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <label>To</label>
+                                    <div class="form-group">
+                                        <input type="date" id="txtTo" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <button class="btn-success" onclick="GetCalculateCommission();" style="margin-top:23px; height:27px;border:none; margin-left:-16px;"><i class="fa fa-sign-in"></i>&nbsp;Get</button>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <button class="btn-warning" id="btnSearch" onclick="CommissionReport()" style="height:28px;width:132px;border:none;margin-top:20px;font-size:16px;"><i class="fa fa-download">&nbsp;Download Excel</i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="example-box-wrapper" style="height:480px;margin-bottom:-21px;">
+                                    <div class="table table-responsive">
+                                        <div class="scroll" style="height:450px;overflow:auto;border:1px solid #e3dba2;">
+                                            <table id="tblOrderTrackingDetail" class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:20%;">Name of Unit</th>
+                                                        <th style="width:22%;">Name of Staff</th>
+                                                        <th style="width:11%;">NOS[O]</th>
+                                                        <th>Total</th>
+                                                        <th>Discount</th>
+                                                        <th>Received</th>
+                                                        <th>Incentive</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

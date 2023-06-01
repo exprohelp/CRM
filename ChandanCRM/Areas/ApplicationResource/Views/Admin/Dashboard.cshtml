@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<style>
+    #box-1 {
+        height:300px;
+        width: 300px;
+        background-color:#ccc;
+    }
+    .LargeClass {
+        font-family: NewTimesRoman;
+        font-size: large;
+        font-weight: bold;
+        color: Red;
+    }
+    .NormalClass {
+        font-family: Arial;
+        font-size: small;
+        font-weight: bold;
+        color:Blue;
+    }
+    #spinner-1 input {
+        width:100px;
+    }
+</style>
+<script src="~/JsModule/global.js"></script>     
+<script>
+    $(document).ready(function() {  
+        //set attr value in jquery      
+        $("#myimg").attr("src", "img_girl.jpg"); 
+        //get attr value
+        var title = $("em").attr("title");
+        $("#divid").text(title);               
+    });
+</script>
+
+<em title="Bold and Brave" ></em>
+<span id="spanid"></span>
+<div id="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+            </div>
+        </div>
+    </div>
+</div>

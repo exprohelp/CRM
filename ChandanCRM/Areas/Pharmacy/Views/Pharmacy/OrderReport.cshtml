@@ -1,0 +1,181 @@
+﻿
+@{
+    ViewBag.Title = "OrderReport";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<style>
+    .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > td {
+        text-align: center;
+        border-top: 0;
+        border-color:#abaeb5;
+    }
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th {
+        border-color: #cdc4c4;
+        color: #4b5056;
+        background-color:#e1dede8c !important;
+    }
+    .selected {
+        background: DodgerBlue !important;
+        color:#fff;
+    }
+  
+    table thead th {
+        white-space: nowrap;
+        background: #e1dede !important;
+        color: 5e5757 !important;
+        padding: 2px !important;
+    }
+    table tbody td {
+        white-space: nowrap;       
+    }
+   
+    table {
+        /*overflow-y: auto;*/
+    }
+
+      table thead th {
+            z-index: 100;
+            position: sticky;
+            top: -2px;
+        }
+
+   
+    .btn-tbl {
+        border: none;
+        padding: 1px 9px;
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
+
+    .flex {
+        display: flex !important;
+        align-items: center;
+    }
+
+    hr {
+        margin-top: 35px;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+
+    .fileinput.input-group {
+        display: flex;
+    }
+    .scroll {
+        width:100%;
+        background:#fff;
+        overflow:overlay;
+        max-height: 450px;
+        display: block;
+    }
+    .panel-body {
+        /*box-shadow: 1px 1px 10px #d2d2d2;*/
+        border-radius: 10px;
+        padding: 5px 3px 0px 3px;
+        position: relative;
+    }
+
+    .note {
+        list-style: disc;
+        color: red;
+        font-size: 11px;
+        font-weight: bold;
+        background: #f7f7f7;
+        border: 1px solid #d86c6c;
+    }  
+    .bc {
+        border: 1px solid #00a65a;
+        border-radius: 0;
+    }      
+</style>
+<script src="~/Areas/Pharmacy/JsModule/OrderReport.js"></script>
+<div id="page-content">
+<div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ml15">
+                    <div class="">
+                        <div class="panel">
+                            <div class="panel-heading" style="background:#d19a4a;padding:1px  10px;">
+                                <p class="text-white">Order Report</p>
+                            </div>
+                            <div class="panel-body" style="background:#fff;">
+                                <div class="col-xs-3">
+                                    <label>From </label>
+                                    <div class="form-group">
+                                       <input type="date" id="txtFrom" class="form-control" style="margin-left:-9px;" />                                       
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <label>To</label>
+                                    <div class="form-group">
+                                        <input type="date" id="txtTo" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                   <button class="btn-warning" onclick="GetOrderReport();" style="margin-top:23px; height:27px; margin-left:-16px;"><i class="fa fa-sign-in"></i>&nbsp;Get</button>
+                                </div>
+                                <div class="col-xs-4">
+                                    <label>Search last few order by no or mobileno or cardno</label>
+                                    <div class="form-group" style="display:flex">
+                                        <input type="text" class="form-control" id="txtSearch" placeholder="Search By CardNo, MobileNo and OrderNo..."  autocomplete="off"/>
+                                        <button class="btn-success" id="btnSearch" onclick="SearchbyOrder()" style="height:28px; width:99px;"><i class="fa fa-search"></i>&nbsp;Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="panel-body">
+                                    <div class="example-box-wrapper" style="height:480px;margin-bottom:-21px;">
+                                        <div class="table table-responsive">
+                                            <div class="scroll" style="height:450px;overflow:auto;border:1px solid #e3dba2;">
+                                                <table id="tblOrderReportDetail" class="table table-bordered">
+                                                    <thead class="tableFixHead">
+                                                        <tr>
+                                                            <th colspan="2">Customer Detail</th>
+                                                            <th colspan="5">Order Detail</th>
+                                                            <th colspan="7">Sale Detail</th>
+                                                            <th colspan="3">Delivery Detail</th>
+                                                            <th colspan="3">Remarks</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width:1px;">Card Number</th>
+                                                            <th style="width:10px;">Name</th>
+                                                            <th>Master Order</th>
+                                                            <th>Order No</th>
+                                                            <th>Date Time</th>
+                                                            <th>Del(Home)</th>
+                                                            <th>Status</th>
+
+                                                            <th>Sales Time Date</th>
+                                                            <th>Total</th>
+                                                            <th>Discount</th>
+                                                            <th>Net</th>
+                                                            <th>Disc%</th>
+                                                            <th>Delay(H)</th>
+                                                            <th>Order For Unit</th>
+
+                                                            <th>Delivery Date Time</th>
+                                                            <th>Delivered Date Time</th>
+                                                            <th>Delay(H)</th>
+
+                                                            <th>Unit Remarks(H)</th>
+                                                            <th style="width:10%">Tele Remark</th>
+                                                            <th>Emp Name</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>                           
+                        </div>
+                </div>
+            </div>           
+        </div>
+    </div>
+</div>
+</div>

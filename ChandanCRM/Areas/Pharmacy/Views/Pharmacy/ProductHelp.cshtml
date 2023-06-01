@@ -1,0 +1,339 @@
+﻿
+@{
+    ViewBag.Title = "ProductHelp";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+     table thead th {
+      background:#ddd38e6b!important;
+        color: #544c4c !important;
+    }    
+    table {
+        overflow-y:auto;
+    }
+        table thead th {
+            z-index: 100;
+            position: sticky;
+            top: -2px;
+        }
+    .cat-group {
+        background:#ddd;     
+    }
+    .btn-add {
+        width: 14%;
+        height: 28px;
+        border: none;
+    }
+
+    .btn-tbl {
+        border: none;
+        padding: 1px 9px;
+        font-size: 13px;
+        margin-bottom:2px;
+    }
+
+    .flex {
+        display:flex!important;
+        align-items: center;
+    }
+
+    hr {
+        margin-top: 35px;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+
+    .custom-table {
+        width: 100%;
+        line-height:29px;
+        font-size:12px;
+    }
+
+    .fileinput.input-group {
+        display: flex;
+    }
+
+    .text-17 {
+        font-size:17px;
+    }
+
+    .btn-flat {
+        padding:2px;
+        border:none;
+    }
+
+    .scroll {
+        width:100%;
+        background:#fff;
+        overflow: overlay;
+        max-height: 450px;
+        display: block;
+    }
+    .panel-body {
+        /*box-shadow: 1px 1px 10px #d2d2d2;*/
+        border-radius: 10px;
+        padding: 5px 3px 0px 3px;
+        position: relative;
+    }
+
+    .note {
+        list-style: disc;
+        color: red;
+        font-size: 11px;
+        font-weight: bold;
+        background: #f7f7f7;
+        border:1px solid #d86c6c;
+    }
+
+    .bn {
+        margin: 0px;
+        font-size: 10pt;
+        padding: 0px 10px;
+        border-radius: 0;
+        text-align: left;
+        height: 30px;
+    }
+
+    .bc {
+        border:1px solid #00a65a;
+        border-radius:0;
+    }
+</style>
+<style>
+    #MiscellaneousModal h3 {
+        margin:0;
+        font-size:18px;
+    }
+
+    .box-header.with-border {
+        background: #f7f7f7;
+        padding: 5px 7px;
+        border-bottom: 1px solid #f4f4f4;
+    }
+
+    .box {
+        border: 1px solid #ddd;
+    }
+
+    .selected {
+        background: DodgerBlue !important;
+        color: #fff;
+    }
+
+    highlight_row {
+        background-color: #d5e7f8;
+        color: #000;
+    }
+
+    .highlight {
+        background-color: red;
+    }
+
+    .text-white {
+        color: #fff;
+        margin: 5px 0px !important;
+    }
+
+    .nav > li > a {
+        padding: 5px 5px;
+        color: #fff;
+    }
+
+    .nav > li.active > a {
+        color: #fff;
+        background: #00bca;
+    }
+    .nav-tabs {
+        padding:0;
+        border:0;
+    }
+
+    .modal-xl {
+        width: 1140px !important;
+    }
+
+    .panel-heading {
+        padding: 1px 4px;
+    }
+    .modal-header {
+        padding: 5px 22px;
+        background: #337ab7;
+    }
+    .close {
+        right: 17px;
+        position: absolute;
+        color: red;
+        opacity:100;
+    }
+</style>
+<script src="~/Areas/Pharmacy/JsModule/ProductHelp.js"></script>
+<div id="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="ml15">
+                    <div class="">
+                        <div class="panel">
+                            <div class="panel-heading" style="background:#d19a4a;padding:1px 10px;">
+                                <p class="text-white">Product</p>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">                                   
+                                        <label>
+                                            <input type="radio" name="Product" value="" />Search By Salt
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="Product" value="" />By Product Name
+                                        </label>
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <div class="form-group flex bc">
+                                            <input type="text" id="txtSearch" autocomplete="off" class="form-control" placeholder="Search Product..." />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="example-box-wrapper">
+                                    <div class="table table-responsive">
+                                        <div class="scroll" style="height:433px;overflow:auto;border: 1px solid #b17722;">
+                                            <span data-itemname style="display:none"></span>
+                                            <span data-itemid style="display:none"></span>
+                                            <table id="tblProductDetails" class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr.No</th>
+                                                        <th>Product Name</th>
+                                                        <th style="width:1%">CMD</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="">
+                    <div class="">
+                        <div class="panel">
+                            <div class="panel-heading" style="background:#d19a4a;padding:1px 10px;">
+                                <p class="text-white">Product Detail</p>
+                            </div>
+                            <div class="panel-body" style="background:#fff;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="" style="height:70px;">
+                                            <table class="table table-bordered" id="tblProductInfo" style="font-size: 13px;margin: 0px 0px 30px 0px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:25%">Product Name</th>
+                                                        <th style="width:5%">:</th>
+                                                        <td id="txtProductName"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width:25%">Company</th>
+                                                        <th style="width:5%">:</th>
+                                                        <td id="txtCompany"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width:25%">Pack Type</th>
+                                                        <th style="width:5%">:</th>
+                                                        <td id="txtPackType"></td>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="panel">
+                    <div class="panel-heading" style="background:#d19a4a;padding:1px 10px;">
+                        <p class="text-white">Salt Information List</p>
+                    </div>
+                    <div class="panel-body" style="background:#fff;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="scroll" style="max-height: 154px; display:block; border: 1px solid #b17722; overflow:auto;padding-bottom:7px;">
+                                    <div class="table table-responsive">
+                                        <table class="table table-bordered" id="tblSaltInfo">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:30%;">Salt Name</th>
+                                                    <th  style="width:1%;">Quantity</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel">
+                    <div class="panel-heading" style="background:#d19a4a;padding:1px 10px;">
+                        <label style="color:white;">Store Wise Availability:</label> &nbsp;<span id="txtStoreAvailable" style="color:#fff"></span>
+                    </div>
+                    <div class="panel-body" style="background:#fff;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="scroll" style="height:250px;overflow:auto;border: 1px solid #b17722;">
+                                        <table class="table table-bordered" id="tblStoreAvailabilty">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:80%;">Unit Name</th>
+                                                    <th class="text-right">Quantity</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel">
+                    <div class="panel-heading" style="background:#d19a4a;padding:3px 10px;">
+                        <label style="color:white;">Subtitute of:</label> &nbsp;<span id="txtSubtituteName" style="color:#fff"></span>
+                    </div>
+                    <div class="panel-body" style="background:#fff;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                    <div class="scroll" style="height:250px;overflow:auto;border: 1px solid #b17722;">
+                                            <table class="table table-bordered" id="tblStore">
+                                                <thead>
+                                                    <tr>
+                                                        <th  style="width:62%;">Unit Name</th>
+                                                        <th  class="text-right" style="width:10%;">Quantity</th>
+                                                        <th  class="text-right" style="white-space: nowrap;">Quantity In Pack</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>              
+</div>
+    
+
+

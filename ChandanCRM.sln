@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1231
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChandanCRM", "ChandanCRM\ChandanCRM.csproj", "{0518E182-54B1-4AB6-A293-3DF1D7C71DE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crm_Api", "Crm_Api\Crm_Api.csproj", "{45382582-A7B9-4CAD-86E6-FB4B9BA9C8FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0518E182-54B1-4AB6-A293-3DF1D7C71DE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0518E182-54B1-4AB6-A293-3DF1D7C71DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0518E182-54B1-4AB6-A293-3DF1D7C71DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0518E182-54B1-4AB6-A293-3DF1D7C71DE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45382582-A7B9-4CAD-86E6-FB4B9BA9C8FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45382582-A7B9-4CAD-86E6-FB4B9BA9C8FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45382582-A7B9-4CAD-86E6-FB4B9BA9C8FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45382582-A7B9-4CAD-86E6-FB4B9BA9C8FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {194C9E52-B9A8-439C-B0F3-9E5CEC3F37E8}
+	EndGlobalSection
+EndGlobal

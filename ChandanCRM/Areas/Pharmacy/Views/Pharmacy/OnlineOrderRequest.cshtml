@@ -1,0 +1,406 @@
+﻿
+@{
+    ViewBag.Title = "OnlineOrderRequest";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<style>
+    .selected {      
+        color:#fff;
+    }
+
+    .tblCardInfo tbody tr th {
+        padding-left: 14px;
+        font-size: 10px;
+        line-height: 19px;
+        font-weight: bold;
+        color: black;
+        background-color: #eee !important;
+    }
+
+    .tblCardInfo tbody tr td {
+        background-color: #eee !important;
+    }
+    table thead th {
+        white-space: nowrap;
+        background: #ddd38ed1 !important;
+        color: 5e5757 !important;
+        padding: 6px !important;
+    }
+
+    .tblCardInfo tbody td, .table tbody th {
+        background: #fff !important;
+        border: none !important;
+        padding: 3px !important;
+        font-size: 11px;
+    }
+
+    table {
+        overflow-y: auto;
+    }
+
+        table thead th {
+            z-index: 100;
+            position: sticky;
+            top: -2px;
+        }
+
+    .btn-add {
+        width: 14%;
+        height: 28px;
+        border: none;
+    }
+
+    .btn-tbl {
+        border: none;
+        padding: 1px 9px;
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
+
+    .flex {
+        display: flex !important;
+        align-items: center;
+    }
+
+    hr {
+        margin-top: 35px;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+
+    .custom-table {
+        width: 100%;
+        line-height: 29px;
+        font-size: 12px;
+    }
+
+    .fileinput.input-group {
+        display: flex;
+    }
+
+    .text-17 {
+        font-size: 17px;
+    }
+
+    .btn-flat {
+        padding: 2px;
+        border: none;
+    }
+
+    .scroll {
+        width: 100%;
+        background: #fff;
+        overflow: overlay;
+        max-height: 450px;
+        display: block;
+    }
+
+    .panel-body {
+        /*box-shadow: 1px 1px 10px #d2d2d2;*/
+        border-radius: 10px;
+        padding: 5px 3px 0px 3px;
+        position: relative;
+    }
+
+    .note {
+        list-style: disc;
+        color: red;
+        font-size: 11px;
+        font-weight: bold;
+        background: #f7f7f7;
+        border: 1px solid #d86c6c;
+    }
+
+    .bn {
+        margin: 0px;
+        font-size: 10pt;
+        padding: 0px 10px;
+        border-radius: 0;
+        text-align: left;
+        height: 30px;
+    }
+
+    .bc {
+        border: 1px solid #00a65a;
+        border-radius: 0;
+    }
+
+    #ItemList table {
+        font-size: 11px;
+        line-height: 22px;
+        width: 100%;
+    }
+        #ItemList table td, #ItemListDetails table td, #ItemListDetails table th {
+            padding: 1px 0px 0px 10px;
+        }
+
+        #ItemList table tbody tr, #ItemListDetails table tbody tr {
+            border-bottom: 0.1px solid #eaeaea;
+        }
+</style>
+<style>
+    #MiscellaneousModal h3 {
+        margin: 0;
+        font-size:18px;
+    }
+    .box-header.with-border {
+        background: #f7f7f7;
+        padding: 5px 7px;
+        border-bottom: 1px solid #f4f4f4;
+    }
+    .box {
+        border: 1px solid #ddd;
+    }
+
+    .selected {
+        background: DodgerBlue !important;
+        color: #fff;
+    }
+
+    highlight_row {
+        background-color: #d5e7f8;
+        color: #000;
+    }
+
+    .highlight {
+        background-color: red;
+    }
+
+    .text-white {
+        color: #fff;
+        margin: 5px 0px !important;
+    }
+
+    .nav > li > a {
+        padding: 5px 5px;
+        color: #fff;
+    }
+
+    .nav > li.active > a {
+        color: #fff;
+        background: #00bca;
+    }
+
+    .nav-tabs {
+        padding: 0;
+        border: 0;
+    }
+
+    .modal-xl {
+        width: 1140px !important;
+    }
+
+    .panel-heading {
+        padding: 1px 4px;
+    }
+
+    .modal-header {
+        padding: 5px 22px;
+        background: #337ab7;
+    }
+
+    .close {
+        right: 17px;
+        position: absolute;
+        color: red;
+        opacity: 100;
+    }
+
+    #ItemList {
+        box-shadow: 1px 1px 1px #ececec;
+        border: 1px solid #ececec;
+        width: 98%;
+        max-width: 82%;
+        max-height: 250px;
+        /*overflow: scroll;*/
+        overflow-x: hidden;
+        position: absolute;
+        z-index: 999;
+        background: #fff;
+        margin-top: -10px;
+    }
+        #ItemList table {
+            font-size: 11px;
+            line-height: 22px;
+            width: 100%;
+        }
+            #ItemList table td, #ItemListDetails table td, #ItemListDetails table th {
+                padding: 1px 0px 0px 10px;
+            }
+
+            #ItemList table tbody tr, #ItemListDetails table tbody tr {
+                border-bottom: 0.1px solid #eaeaea;
+         }
+</style>
+<script src="~/Areas/Pharmacy/JsModule/OnlineOrderRequest.js"></script>
+<div id="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="ml15">
+                    <div class="">
+                        <div class="panel">
+                            <div class="panel-heading" style="background:#d19a4a;padding:1px  10px;">
+                                <p class="text-white">Rad Form</p>
+                            </div>
+                            <div class="panel-body">
+                                <div class="example-box-wrapper" style="height:517px; border:1px solid #b17722;">
+                                    <div class="table table-responsive">
+                                        <div class="scroll" style="min-height:500px;overflow:auto;">
+                                            <table id="tblOrderDetails" class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:1%;">Sr.No</th>
+                                                        <th style="width:15%">Card Number</th>
+                                                        <th>Order Number</th>
+                                                        <th style="width:1%;">CMD</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="panel">
+                    <div class="panel-heading" style="background:#d19a4a;padding:1px 10px;">
+                        <p class="text-white">Card Information</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-6 form-group">
+                            <div class="" style="border: 1px solid #d2d6de;background:#eee !important;">
+                                <table class="table-condensed tblCardInfo " id="tblCardInformation" style="padding: 15px 13px;">
+                                    <tbody>
+                                        <tr>
+                                            <th>CARD NO</th>
+                                            <th>:</th>
+                                            <td id="txtCardNo">XXXX</td>
+                                        </tr>
+                                        <tr>
+                                            <th>CUST NAME</th>
+                                            <th>:</th>
+                                            <td id="txtCurdName">XXXX</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MOBILE NO</th>
+                                            <th>:</th>
+                                            <td id="txtMobileNo">XXXX</td>
+                                        </tr>
+                                        <tr>
+                                            <th>PHONE NO</th>
+                                            <th>:</th>
+                                            <td id="txtPhoneNo">XXXX</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;">LAST PUR DATE</th>
+                                            <th>:</th>
+                                            <td id="txtLastDate">XXXX</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><input type="text" autocomplete="off" id="txtAddress" class=form-control style="margin-left: 2%; width:98%;" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div class="" style="border: 1px solid #ada8a8; height: 183px;">
+                                <table class="table" id="tblOrderInformation" style="padding: 11px 9px;">
+                                    <tbody>
+                                        <tr>
+                                            <th>Order No</th>
+                                            <th>:</th>
+                                            <td class="flex" style="border: none">
+                                                <input type="text" id="txtOrderNo" class="form-control" readonly="readonly" placeholder="Order No" style="margin-left:-7px" autocomplete="off">
+                                                <button class="btn btn-success btn-xs" onclick="ShowPres()" style="margin-right: 1px;height: 26px; width:54%;"><span class="fa fa-eye">&nbsp;</span>Prescription</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>:</th>
+                                            <td class="flex" style="border: none">
+                                                <input type="text" id="txtTime" class="form-control" readonly="readonly" placeholder="Time" style="margin-left:-7px" autocomplete="off">
+                                                <button class="btn btn-danger btn-xs" onclick="CancelOrder()" style="margin-right: 1px;height: 26px; width:54%;"><span class="fa fa-remove">&nbsp;&nbsp;</span>Cancel</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Delivary Date</th>
+                                            <th>:</th>
+                                            <th><input type="date" id="txtDelivaryDate" class="form-control" placeholder=""></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Delivary Time</th>
+                                            <th>:</th>
+                                            <th><input type="text" id="txtDelivaryTime" class="form-control" placeholder="Delivary Time" autocomplete="off"></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Presrcribe By</th>
+                                            <th>:</th>
+                                            <th><input type="text" id="txtPresrcribeBy" class="form-control" placeholder="Presrcribe By" autocomplete="off"></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="padding:0px;">
+                            <div class="panel-body">
+                                <div class="col-md-6">
+                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput" style="display:flex">
+                                        <input type="text" id="txtItemName" autocomplete="off" class="form-control input_pass" placeholder="Search...">
+                                        <input type="text" id="txtItemId" style="display:none">
+                                        <input type="text" id="txtQty" autocomplete="off" style="width:15%;" class="form-control input_pass" placeholder="Qty">
+                                    </div>
+                                    <div id="ItemList" style="display:none">
+                                        <table id="tblnavigate">
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="scroll" style="height: 200px;border: 1px solid #b17722;">
+                                    <table class="table table-bordered" id="tblItemDetails" style="margin:0;">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:30%">Item Name</th>
+                                                <th style="width:1%">Quantity</th>
+                                                <th style="width:1%">CMD</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                                <hr style="margin-top:10px;"/>
+                                <div class="col-md-12 form-group">
+                                    <div class="row">
+                                        <div class="col-md-4 form-group flex" style="align-items:center;">
+                                            <label style="width:30%;">Remark</label>
+                                            <input type="text" id="txtRemark" autocomplete="off" class="form-control" placeholder="Remark" />
+                                        </div>
+                                        <div class="col-md-6 form-group flex" style="align-items: center;">
+                                            <label style="width:53%;">Transfer unit</label>
+                                            <select id="ddlTransferList" class="form-control" style="border-radius:0;border-color:#f0ad4e" tabindex="-1" aria-hidden="true">
+                                                <option>Select</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 form-group flex" style="align-items: center;">
+                                            <button class="btn-flat btn-warning" onclick="GetRCMOrderInfo();" style="padding: 4px 20px;height: 30px;"><span class="fa fa-sign-in">&nbsp;</span>Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,118 @@
+﻿
+@{
+	ViewBag.Title = "CPOETemplateItems";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<script src="~/Areas/Masters/JsModule/CPOE/CPOETemplateItems.js"></script>
+<style>	
+	hr {
+		margin-top: 35px;
+		margin-bottom: 5px;
+		border: 0;
+		border-top: 1px solid #eee;
+	}
+	.fileinput.input-group {
+		display: flex;
+	}
+
+	.text-17 {
+		font-size: 17px;
+	}
+
+	.scroll {
+		width: 100%;
+		background: #fff;
+		overflow: overlay;
+		max-height: 380px;
+		display: block;
+	}
+
+	.panel-body {
+		/*box-shadow: 1px 1px 10px #d2d2d2;*/
+		border-radius: 10px;
+		padding: 5px 3px 0px 3px;
+		position: relative;
+	}
+
+	.ml15 {
+		margin-left: 15px;
+	}
+	.btn-flat{		
+		border:0;
+	}
+</style>
+<div id="page-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7">
+				<div class="">
+					<div class="">
+						<div class="panel">
+							<div class="panel-heading" style="background:#0076d0;padding: 4px;">
+								<input type="button" onclick="Clear()" class="btn btn-success" value="New" />
+								<h4 class="text-white pull-right">Create Template Items</h4>
+							</div>
+							<div class="panel-body" style="background:#fff;padding: -1px 20px;">
+								<div class="col-md-4">
+									<div class="form-group">
+										<select id="ddlTemplate" class="form-control" data-imp onchange="TemplateInfoByTemplateId()">											
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="text" id="txtItemName" data-imp class="form-control text-uppercase" placeholder="Item Name" />
+										<span data-categoryid style="display:none"></span>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<span id="hiddenItemId" style="display:none"></span>
+										<input type="button" id="btnSave" class="btn btn-success" value="Submit" />
+									</div>
+								</div>
+								<div class="col-md-9">
+									<div class="fileinput fileinput-new input-group" data-provides="fileinput">
+										<input type="text" id="txtSearch" class="form-control input_pass" value="" placeholder="Search...">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="btn btn-success" onclick="GetTemplateInfo()">Load List</span>
+									</div>
+								</div>
+							</div>
+							<div class="panel-body">
+								<div class="example-box-wrapper">
+									<div class="form-horizontal bordered-row">
+										<div class="table table-responsive">
+											<div class="scroll">
+												<table id="tblTemplateInfo" class="table table-bordered">
+													<thead>
+														<tr>
+															<th style="width:1%">Edit</th>
+															<th style="width:15%">Template Type</th>
+															<th style="width:20%">Template Name</th>
+															<th style="width:35%">Item Name</th>
+															<th>cr_date</th>
+															<th style="width:1%">On/Off</th>
+														</tr>
+													</thead>
+													<tbody></tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

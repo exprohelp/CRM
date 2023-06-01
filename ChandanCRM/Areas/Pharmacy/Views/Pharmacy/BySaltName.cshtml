@@ -1,0 +1,221 @@
+﻿
+@{
+    ViewBag.Title = "BySaltName";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<style>
+    .row tbody tr.selectrow td {
+        background-color: #b17722;
+        color:white;
+    }
+    .tblCardInfo tbody tr th {
+        padding-left:14px;
+        line-height:19px;
+        font-weight:bold;
+        color: black;
+        background-color:#eee!important;
+        padding: 4px 7px 0px;
+    }
+
+    .tblCardInfo tbody tr td {
+        background-color: #eee !important;
+    }
+
+    table thead th {
+        white-space: nowrap;
+        background: #ddd38ed1 !important;
+        color: 5e5757 !important;
+        padding: 6px !important;
+    }
+
+    .tblCardInfo tbody td, .table tbody th {
+        background: #fff !important;
+        border: none !important;
+        padding: 3px !important;
+    }
+
+    table {
+        overflow-y: auto;
+    }
+
+        table thead th {
+            z-index: 100;
+            position: sticky;
+            top: -2px;
+        }
+    .btn-add {
+        width: 14%;
+        height: 28px;
+        border: none;
+    }
+    .btn-tbl {
+        border: none;
+        padding: 1px 9px;
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
+    .flex {
+        display: flex !important;
+        align-items: center;
+    }
+
+    hr {
+        margin-top: 35px;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+
+    .custom-table {
+        width: 100%;
+        line-height: 29px;
+        font-size: 12px;
+    }
+
+    .fileinput.input-group {
+        display: flex;
+    }
+
+    .text-17 {
+        font-size: 17px;
+    }
+
+    .btn-flat {
+        padding: 2px;
+        border: none;
+    }
+
+    .scroll {
+        width: 100%;
+        background: #fff;
+        overflow: overlay;
+        max-height: 450px;
+        display: block;
+    }
+    .panel-body {
+        border-radius: 10px;
+        padding: 5px 3px 0px 3px;
+        position: relative;
+    }
+    .note {
+        list-style: disc;
+        color: red;
+        font-size: 11px;
+        font-weight: bold;
+        background: #f7f7f7;
+        border: 1px solid #d86c6c;
+    }
+    .bn {
+        height:22px;
+        border: none;
+        padding:5px 8px;
+    }
+
+    .bc {
+        border: 1px solid #00a65a;
+        border-radius: 0;
+    }
+
+    .table th {
+        width: 5%;
+    }
+
+    .table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+        padding:2px;
+    }
+
+    .selected {
+        background-color: red;
+    }
+    body {
+        font-family: "Open Sans","Helvetica Neue", Helvetica,Arial, sans-serif;
+        font-size: 11px;
+        color: #3e4855;
+        background-color:#fff;
+        line-height: 1.42857143;
+    }
+</style>
+<script src="~/Areas/Pharmacy/JsModule/BySaltName.js"></script>
+<div id="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="ml15">
+                    <div class="">
+                        <div class="panel">
+                            <div class="panel-heading" style="background:#d19a4a;padding:1px  10px;">
+                                <p class="text-white">Search By Salt Name</p>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Type Salt Name To Search</label>
+                                        <input type="text" class="form-control" id="txtSearchItem" autocomplete="off" placeholder="Search" />
+                                    </div>                                    
+                                </div>
+                                <div class="example-box-wrapper" style="height:463px;border:1px solid #b17722;margin-top:10px;">
+                                    <div class="table table-responsive">
+                                        <div class="scroll" style="min-height:400px;overflow:auto;">
+                                            <table id="tblProductDetails" class="table table-bordered">
+                                                <thead>
+                                                    <tr>                                                    
+                                                        <th style="width:15%">Salt Name</th>
+                                                        <th style="width:1%;">CMD</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="panel">
+                    <div class="panel-heading" style="background:#d19a4a;padding:1px 10px;">
+                        <label style="color:white;">Product Info</label> &nbsp;<span id="txtSaltName" style="color:#fff"></span>
+                    </div>
+                    <div class="panel-body" style="background:#fff;">
+                        <div class="row">
+                            <div class="col-md-12">                              
+                                <div class="table table-responsive">
+                                    <div class="scroll" style="height:238px; display:block;border: 1px solid #b17722; overflow:auto;padding-bottom:7px;">
+                                        <table class="table table-bordered" id="tblSaltInfo">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:30%;">Name of Item</th>
+                                                    <th style="width:1%;">Strength</th>
+                                                    <th style="width:2%;">Mfd Name</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+                                </div>
+                            <div class="col-md-12 ">                               
+                                <div class="table table-responsive">
+                                    <div class="scroll" style="height:235px;margin-top:1px; display:block; border: 1px solid #b17722; overflow:auto;padding-bottom:7px;">
+                                        <table class="table table-bordered" id="tblSubItems">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:30%;">Name of Salt</th>
+                                                    <th style="width:1%;">Strength</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                 </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

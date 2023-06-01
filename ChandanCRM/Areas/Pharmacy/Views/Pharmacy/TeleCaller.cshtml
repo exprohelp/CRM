@@ -1,0 +1,750 @@
+﻿
+@{
+    ViewBag.Title = "TeleCaller";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<style>
+    .tblCardInfo tbody tr th {
+        padding-left: 14px;
+        font-size: 10px;
+        line-height: 19px;
+        font-weight: bold;
+        color: black;
+        background-color: #eee !important;
+        padding: 4px 7px 0px;
+    }
+
+    .tblCardInfo tbody tr td {
+        background-color: #eee !important;
+    }
+
+    table thead th {
+        white-space: nowrap;
+        background: #ddd38ed1 !important;
+        color: 5e5757 !important;
+        padding: 6px !important;
+    }
+
+    .tblCardInfo tbody td, .table tbody th {
+        background: #fff !important;
+        border: none !important;
+        padding:3px !important;
+        font-size: 12px;      
+    }
+    table {
+        overflow-y: auto;
+    }
+
+        table thead th {
+            z-index: 100;
+            position: sticky;
+            top: -2px;
+        }
+
+    .btn-add {
+        width: 14%;
+        height: 28px;
+        border: none;
+    }
+
+    .btn-tbl {
+        border: none;
+        padding: 1px 9px;
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
+
+    .flex {
+        display: flex !important;
+        align-items: center;
+    }
+
+    hr {
+        margin-top: 35px;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+
+    .custom-table {
+        width: 100%;
+        line-height: 29px;
+        font-size: 12px;
+    }
+
+    .fileinput.input-group {
+        display: flex;
+    }
+
+    .text-17 {
+        font-size: 17px;
+    }
+    .btn-flat {
+        padding: 2px;
+        border: none;
+    }
+
+    .scroll {
+        width:100%;
+        background:#fff;
+        overflow: overlay;
+        max-height: 450px;
+        display: block;
+    }
+
+    .panel-body {
+        /*box-shadow: 1px 1px 10px #d2d2d2;*/
+        border-radius:10px;
+        padding: 5px 3px 0px 3px;
+        position: relative;
+    }
+
+    .note {
+        list-style: disc;
+        color: red;
+        font-size: 11px;
+        font-weight: bold;
+        background: #f7f7f7;
+        border: 1px solid #d86c6c;
+    }
+
+    .bn {
+        margin: 0px;
+        font-size: 10pt;
+        padding: 0px 10px;
+        border-radius: 0;
+        text-align: left;
+        height: 30px;
+    }
+
+    .bc {
+        border: 1px solid #00a65a;
+        border-radius: 0;
+    }
+</style>
+<style>
+    #MiscellaneousModal h3 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .box-header.with-border {
+        background: #f7f7f7;
+        padding: 5px 7px;
+        border-bottom: 1px solid #f4f4f4;
+    }
+
+    .box {
+        border: 1px solid #ddd;
+    }
+
+    .selected {
+        background: DodgerBlue !important;
+        color: #fff;
+    }
+
+    highlight_row {
+        background-color: #d5e7f8;
+        color: #000;
+    }
+
+    .highlight {
+        background-color: red;
+    }
+
+    .text-white {
+        color: #fff;
+        margin: 5px 0px !important;
+    }
+    .nav > li > a {
+        padding:5px 5px;
+        color: #00a792;
+    }
+
+    .nav > li.active > a {       
+        color:#fff;
+        background: #00bca;
+    }
+
+    .nav-tabs {
+        padding: 0;
+        border: 0;
+    }
+
+    .modal-xl {
+        width: 1140px !important;
+    }
+
+    .panel-heading {
+        padding: 1px 4px;
+    }
+
+    .modal-header {
+        padding: 5px 22px;
+        background: #337ab7;
+    }
+
+    .close {
+        right: 17px;
+        position: absolute;
+        color: red;
+        opacity:100;
+    }
+
+    .bn {
+        width: 16%;
+        margin: 2px 4px 0px;
+        margin-top: 1px;
+        height: 26px;
+        margin-left: 3px;
+        border: none;
+        margin: 1px 4px;
+    }
+
+    .bn1 {
+        border: 1px solid #d2d6de;
+        padding: 4px 9px;
+        background: white;
+        color: black;
+        font-size: 12px;
+        margin-bottom: 5px
+    }
+
+    .bn2 {
+        border: 1px solid #d2d6de;
+        padding: 4px 9px;
+        color: white;
+        font-size: 12px;
+        margin-bottom: 5px
+    }
+
+    .fa-down {
+        border: 3px solid #6e96b9;
+        font-size: 13px;
+        background: #a0d3dfad;
+        padding: 5px 8px;
+        border-radius: 17px;
+        color: #333;
+        font-weight: bold;
+    }
+    .btn {
+        font-size:17px;
+        margin-top: 26px;
+        padding: 0px 17px 1px 13px;
+    }
+
+    .input[type=text] {
+        height: 21px;
+        margin: 4px -19px 3px 0px;
+    }
+
+    .selected {
+        background: DodgerBlue !important;
+        color: #fff;
+    }
+
+    #ItemList {
+        box-shadow: 1px 1px 1px #ececec;
+        border: 1px solid #ececec;
+        width: 98%;
+        max-width: 40%;
+        max-height: 220px;
+        overflow-x: hidden;
+        position: absolute;
+        z-index: 999;
+        background: #fff;
+        margin-top: 26px;
+        margin-left: 10px;
+    }
+
+        #ItemList table {
+            font-size: 11px;
+            line-height: 22px;
+            width:100%;
+        }
+
+            #ItemList table td, #ItemListDetails table td, #ItemListDetails table th {
+                padding: 1px 0px 0px 10px;
+            }
+
+            #ItemList table tbody tr, #ItemListDetails table tbody tr {
+                border-bottom: 0.1px solid #eaeaea;
+            }
+   
+</style>
+
+<script src="~/Areas/Pharmacy/JsModule/TeleCaller.js"></script>
+<div id="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="ml15">
+                    <div class="">
+                        <div class="panel">
+                            <div class="panel-heading" style="background:#d19a4a;padding:1px  10px;">
+                                <p class="text-white">Card Info</p>
+                            </div>
+                            <div class="panel-body">
+                                <div class="radio-inline">
+                                    <input type="radio" name="cardradio" value="0">CardId
+                                </div>
+                                <div class="radio-inline">
+                                    <input type="radio" name="cardradio" value="1" checked>Mobile No
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6" style="display:flex">
+                                        <input type="text"  class="form-control" id="txtSearch" autocomplete="off" placeholder="Search"/>
+                                        <input id="btnSearch" type="button" value=">>" class="btn-success bn"/>
+                                        @*<button class="btn-success bn"><span class="fa fa-search"></span></button>*@
+                                    </div>
+                                    <div class="col-md-6" style="display:flex">
+                                        <select id="ddlCardNo">
+                                            <option>Select</option>
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <label style="margin-left:10px;">Date</label>
+                                                <input type="date" class="form-control" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Time Slot</label>
+                                                <select class="form-control" id="ddlTimeSlot">
+                                                    <option>All</option>
+                                                    <option>08:00AM</option>
+                                                    <option>09:00AM</option>
+                                                    <option>10:00AM</option>
+                                                    <option>11:00AM</option>
+                                                    <option>12:00AM</option>
+                                                    <option>01:00AM</option>
+                                                    <option>02:00AM</option>
+                                                    <option>03:00AM</option>
+                                                    <option>04:00AM</option>
+                                                    <option>05:00AM</option>
+                                                    <option>06:00AM</option>
+                                                    <option>07:00AM</option>
+                                                    <option>08:00AM</option>
+                                                    <option>09:00AM</option>
+                                                    <option>10:00AM</option>
+                                                    <option>11:00AM</option>
+                                                    <option>12:00AM</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <button class="btn-success" onclick="GetcardInfo();" style="width:59px;border:none;margin-left: -14px;height: 26px; margin-top: 24px;font-size: 17px;"><span class="fa fa-sign-in">&nbsp;Get</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="example-box-wrapper" style="height:609px;border:1px solid #b17722;margin-top:10px;">
+                                    <div class="table table-responsive">
+                                        <div class="scroll" style="min-height:550px;overflow:auto;">
+                                            <table id="tblCardDetails" class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:0%">card number</th>
+                                                        <th style="width:15%">RmdTime</th>
+                                                        <th style="width:1%;">cmd</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="panel">
+                    <div class="panel-heading" style="background:#d19a4a;padding:1px 10px;">
+                        <p class="text-white">Regular Customer Reminder Service</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-12 form-group">
+                            <div class="" style="border:1px solid #d2d6de;background:#eee !important;margin:0px -10px;">
+                                <table class="table-condensed tblCardInfo " id="tblCardInformation" style="padding:15px 13px;">
+                                    <tbody>
+                                        <tr>
+                                            <th>CARD NO</th>
+                                            <th>:</th>
+                                            <td id="txtCardNo">XXXX</td>
+                                            <th>Family Member</th>
+                                            <th>:</th>
+                                            <td class="col-md-4">
+                                                <select class="form-control" id="ddlFamilyMember">
+                                                    <option>Select</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>CUST NAME</th>
+                                            <th>:</th>
+                                            <td id="txtCurdName">XXXX</td>
+                                        </tr>
+                                        <tr>
+                                            <th>MOBILE NO</th>
+                                            <th>:</th>
+                                            <td id="txtMobileNo">XXXX</td>
+                                        </tr>
+                                        <tr>
+                                            <th>PHONE NO</th>
+                                            <th>:</th>
+                                            <td id="txtPhoneNo">XXXX</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;">LAST PUR DATE</th>
+                                            <th>:</th>
+                                            <td id="txtLastDate">XXXX</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;">ADDRESS</th>
+                                            <th>:</th>
+                                            <td colspan="3"><input type="text" autocomplete="off" id="txtAddress" class=form-control style="margin-left:-4%;width:232%;" placeholder="Address" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="padding:0px;margin-top:-10px;">
+                            <div class="row">
+                                <div class="col-md-12 bottom-tab">
+                                    <ul class="nav nav-tabs" style="margin:0px 0px 9px 0px;border-bottom:1px solid #ccc;">
+                                        <li class="active"><a data-toggle="tab" id="head" href="#OrderOnPhone">ORDER ON PHONE</a></li>
+                                        <li><a data-toggle="tab" id="head" href="#BillInformation">BILL INFORMATION</a></li>
+                                        <li><a data-toggle="tab" id="head" href="#CancleOrder">CANCLE ORDER</a></li>
+                                        <li><a data-toggle="tab" id="head" href="#StockAtUnit">STOCK AT UNIT</a></li>
+                                        <li><a data-toggle="tab" id="head" href="#ModifyCard">MODIFY CARD</a></li>
+                                    </ul>
+                                    <div class="tab-content" style="overflow:auto;margin-top:-9px;">
+                                        <div id="OrderOnPhone" class="tab-pane fade in active">
+                                            <div class="col-md-6" style="margin-left:-9px;">
+                                                @*<button class="btn-danger bn1" id="btnadd">ADD(RM)</button>*@
+                                                <span>
+                                                    @*<a href="#" id="UpArrow">
+                                                    <i class="fa fa-angle-up fa-down"></i>
+                                                   </a>*@
+                                                </span>
+                                                <label style="display:inline-flex;"><span style="width:30%;margin-top:-3px;">Order No</span><input type="text" style="width:80%;height:40%;margin-top: -2%;" id="txtOrderNo" class="form-control" value="New" /></label>
+                                                @*<button class="btn-success bn2" onclick="CustomerMedNew()">FILL(RM)</button>*@
+                                            </div>
+                                            <div class="col-md-4" style="display:flex;">
+                                                <label style="white-space:nowrap;margin-top:4px;">Last Sale Inv.</label>&nbsp;
+                                                <input type="text" id="txtSalInvNo" placeholder="LSaleInvoiceNo" class="form-control input"/> &nbsp;
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label style="margin-top:4px;white-space:nowrap;">Complete:Y/N</label>
+                                            </div>
+                                            <div class="row">
+                                                <div class="scroll" style="height:199px;border: 1px solid #b17722;">
+                                                    <table class="table table-bordered" id="tblItemDetails" style="margin:0;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width:20%;">Product Name</th>
+                                                                <th style="width:10%;">New Med</th>
+                                                                <th style="width:1%">Last Qty</th>
+                                                                <th style="width:1%">Qty</th>                                                              
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control input" id="txtItemName" placeholder="search..." autocomplete="off" />
+                                                    <span id="txtItemId" style="display:none"></span>
+                                                </div>
+                                                <div id="ItemList" style="display:none">
+                                                    <table id="tblnavigate">
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="text" autocomplete="off" id="txtQty" class="form-control input" placeholder="Qty" />
+                                                </div>
+                                                <div class="col-md-10" style="display:flex;">
+                                                    <label style="white-space:nowrap;margin-left:-21px;">New Medicine if not found search </label>
+                                                    <input type="text" class="form-control" id="txtNewProduct" style="height:22px" placeholder="search...." />
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="text" class="form-control" id="txtNewQty" style="height:22px" placeholder="Qty" />
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:10px;">
+                                                <div class="col-md-12">
+                                                    <div class="panel" style="height:218px;border:1px solid #ccc;margin-bottom: 17px;">
+                                                        <div class="panel-body">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-3">
+                                                                    <label>Prescribed By:</label>
+                                                                    <input type="text" id="txtPresBy" autocomplete="off" class="form-control" style="height:28px;margin-left:-11px" />
+                                                                </div>
+                                                                <div class="col-md-1">
+                                                                    <label>(P) :</label>
+                                                                    <input type="checkbox" id="chkPromo" style="width: 25px;height: 19px;" />
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label>Promo Date :</label>
+                                                                    <input type="date" id="txtPromoDate" class="form-control" style="height:28px;" />
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label>Delivery Date :</label>
+                                                                    <input type="date" id="txtDelDate" class="form-control" style="height:28px;" />
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label>Time:</label>
+                                                                    <select class="form-control" id="ddlDelTime">
+                                                                        <option>08:00AM</option>
+                                                                        <option>09:00AM</option>
+                                                                        <option>10:00AM</option>
+                                                                        <option>11:00AM</option>
+                                                                        <option>12:00AM</option>
+                                                                        <option>01:00AM</option>
+                                                                        <option>02:00AM</option>
+                                                                        <option>03:00AM</option>
+                                                                        <option>04:00AM</option>
+                                                                        <option>05:00AM</option>
+                                                                        <option>06:00AM</option>
+                                                                        <option>07:00AM</option>
+                                                                        <option>08:00AM</option>
+                                                                        <option>09:00AM</option>
+                                                                        <option>10:00AM</option>
+                                                                        <option>11:00AM</option>
+                                                                        <option>12:00AM</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label>Date/Time</label>
+                                                                    <select class="form-control" id="ddlNextCalltime">
+                                                                        <option>08:00AM</option>
+                                                                        <option>09:00AM</option>
+                                                                        <option>10:00AM</option>
+                                                                        <option>11:00AM</option>
+                                                                        <option>12:00AM</option>
+                                                                        <option>01:00AM</option>
+                                                                        <option>02:00AM</option>
+                                                                        <option>03:00AM</option>
+                                                                        <option>04:00AM</option>
+                                                                        <option>05:00AM</option>
+                                                                        <option>06:00AM</option>
+                                                                        <option>07:00AM</option>
+                                                                        <option>08:00AM</option>
+                                                                        <option>09:00AM</option>
+                                                                        <option>10:00AM</option>
+                                                                        <option>11:00AM</option>
+                                                                        <option>12:00AM</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-6">
+                                                                        <label>Remark/New Medicine Information</label>
+                                                                        <input type="text" id="txtRemark" class="form-control" autocomplete="off" />
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="col-md-3" style="margin-left:-10px;width: 35%;">
+                                                                            <label>Next Call:</label>
+                                                                            <input type="date" id="txtNextCalldate" class="form-control" />
+                                                                        </div>
+                                                                        <div class="col-md-3" style="width:67%;">
+                                                                            <label>Transfer To</label>
+                                                                            <select class="form-control" id="ddlTransferTo">
+                                                                                <option>Select</option>
+                                                                            </select>
+                                                                          
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <label style="white-space: nowrap;">Message For Unit</label>
+                                                                        <textarea rows="1" id="txtMessageForUnit" class="form-control"></textarea>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <label style="white-space:nowrap; margin-top:31px;">Message :</label>
+                                                                        <input type="checkbox" id="chkHomeDel" style="height:19px;width:39px;" />
+                                                                        <label style="white-space: nowrap;color:red;">Home Del :</label>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <button class="btn btn-warning" onclick="RCMCompleteOrderNew()"><span class="fa fa-sign-in">&nbsp;Complete</span></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div id="BillInformation" class="tab-pane fade">
+                                            <div class="col-md-12">
+                                                <button class="btn-success bn" onclick="BillInfo()" style="margin-left:-23px;width:10%;"><span class="fa fa-sign-in"></span>&nbsp;Retrieve</button>
+                                                <button class="btn-success bn2 pull-right" onclick="FillForOrder()" style="font-size:13px;"><span class="fa fa-sign-in"></span>&nbsp;Fill For Order</button>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="ml15">
+                                                        <div class="panel" style="margin-left:-30px;">
+                                                            <div class="panel-body">
+                                                                <div class="example-box-wrapper">
+                                                                    <div class="table table-responsive">
+                                                                        <div class="scroll" style="height:419px;overflow:auto;border: 1px solid #b17722;">
+                                                                            <span data-itemname style="display:none"></span>
+                                                                            <span data-itemid style="display:none"></span>
+                                                                            <table id="tblSaleDetails" class="table table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th style="white-space:nowrap;">Sale Date</th>
+                                                                                        <th>Sale Inv No</th>
+                                                                                        <th>Amount</th>
+                                                                                        <th style="width:0%">CMD</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody></tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="ml15">
+                                                        <div class="panel" style="margin-left:-30px;">
+                                                            <div class="panel-body">
+                                                                <div class="example-box-wrapper">
+                                                                    <div class="table table-responsive">
+                                                                        <div class="scroll" style="height:181px;overflow:auto;border:1px solid #b17722;">
+                                                                            <span data-itemname style="display:none"></span>
+                                                                            <span data-itemid style="display:none"></span>
+                                                                            <table id="tblProductDetails" class="table table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Name of Product</th>
+                                                                                        <th style="width:1%">Qty</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody></tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="panel" style="margin-left:-30px;">
+                                                            <div class="panel-heading" style="background:#d19a4a;padding:1px 10px;">
+                                                                <p class="text-white">Bill In Detail</p>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div class="example-box-wrapper">
+                                                                    <div class="table table-responsive">
+                                                                        <div class="scroll" style="height:157px;overflow:auto;border: 1px solid #b17722;">
+                                                                            <span data-itemname style="display:none"></span>
+                                                                            <span data-itemid style="display:none"></span>
+                                                                            <table id="tblBillDetails" class="table table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Name of Product</th>
+                                                                                        <th>Pack Size</th>
+                                                                                        <th style="width:3%">Qty</th>
+                                                                                        <th style="width:1%">CMD</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody></tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="CancleOrder" class="tab-pane fade in active">
+                                            <div class="col-md-6" style="margin-left:-9px;">
+                                                <label style="display:inline-flex;"><span style="width:30%;margin-top:-3px;">Order No</span><input type="text" style="width:80%;height:40%;margin-top:-2%;" id="txtOrdNo" class="form-control" /></label>
+                                                <button class="btn-success bn2" onclick="GetOrder()"><span class="fa fa-sign-in"></span>&nbsp;Get</button>
+                                            </div>
+                                            <div class="col-md-6" style="display:flex;">
+                                                <label>From</label>
+                                                <input type="date" id="txtFrom" class="form-control input" style="margin-top:-3px;height:24px;" />
+                                                <label>To</label>
+                                                <input type="date" id="txtTo" class="form-control input" style="margin-top:-3px;height:24px;" />
+                                                <button class="btn-success bn" onclick="GetOrderByDate()" style="margin-top:-2px;height:22px;width:24%;">Get</button>
+                                            </div>
+                                            <div class="row">
+                                                <div class="scroll" style="height:199px;border:1px solid #b17722;">
+                                                    <table class="table table-bordered" id="tblOrderDetails" style="margin:0;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width: 4%;">OrderNo</th>
+                                                                <th style="width: 0%;">Order Date</th>
+                                                                <th style="width:15%;">Customer Name</th>
+                                                                <th style="width: 28%;">Remarks</th>
+                                                                <th style="width: 9%;">Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                                <label style="margin-top:7px;background-color: #cfcf8a;padding:2px 13px;">Selected Order :</label>
+                                                <div class="scroll" style="height:199px;border:1px solid #b17722;">
+                                                    <table class="table table-bordered" id="tblOrderDetail" style="margin:0;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width:1%;">ID No</th>
+                                                                <th style="width:5%;">Product Name</th>
+                                                                <th style="width:5%;">New Medicine Name</th>
+                                                                <th style="width:5%;">Qty</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="display:flex;">
+                                                <label style="margin-top:17px;margin-left:-18px;">Remark</label>
+                                                <textarea id="txtRemark" cols="100" style="border-color:#ddd;margin:7px;"></textarea>
+                                                <button class="btn-danger bn2" onclick="CancelOrder()" style="height:38%;margin:16px 13px;width:74px;">Cancel</button>
+                                            </div>
+                                        </div>
+                                        <div id="StockAtUnit" class="tab-pane fade in active">
+                                            <div class="col-md-6" style="margin-left:-9px;display:flex;">
+                                                <input type="text" id="txtItemCode" style="width:50%;height:40%;margin-top:-2%;" class="form-control" placeholder="Type Item Code">
+                                                <button class="btn-success bn" style="height:23px;width:25%;margin-top: -8px;">Check Stock</button>
+                                            </div>
+                                            <div class="row">
+                                                <div class="scroll" style="height:479px;border:1px solid #b17722;margin-top:22px;">
+                                                    <table class="table table-bordered" id="tblStockDetails" style="margin:0;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width:1%;">Unit ID</th>
+                                                                <th style="width:5%;">Name of Unit</th>
+                                                                <th style="width:5%;">In Stock</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>*@                                    
+                                    </div>
+                                 </div>                                                                                                                 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

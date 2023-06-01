@@ -1,0 +1,459 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0518E182-54B1-4AB6-A293-3DF1D7C71DE4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ChandanCRM</RootNamespace>
+    <AssemblyName>ChandanCRM</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BarcodeLib, Version=1.0.0.15, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\BarcodeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML">
+      <HintPath>C:\Users\Animesh Khare\Desktop\JsModule\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="HiQPdf">
+      <HintPath>C:\Users\Animesh Khare\Desktop\JsModule\HiQPdf.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>C:\Users\Animesh Khare\Desktop\JsModule\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>C:\Users\Animesh Khare\Desktop\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\ApplicationResource\JsModule\Employee.js" />
+    <Content Include="Areas\ApplicationResource\JsModule\MenuAllotment.js" />
+    <Content Include="Areas\ApplicationResource\JsModule\MenuMaster.js" />
+    <Content Include="Areas\img\preview.png" />
+    <Content Include="Areas\Master\JsModule\CPOE\CPOETemplateItems.js" />
+    <Content Include="Areas\Master\JsModule\DoctorRegistraion.js" />
+    <Content Include="Areas\Master\JsModule\ListRoomAndBed.js" />
+    <Content Include="Areas\Master\JsModule\RoomAndBed.js" />
+    <Content Include="Areas\Online\JsModule\AvailCoupon.js" />
+    <Content Include="Areas\Online\JsModule\CovidPackageItems.js" />
+    <Content Include="Areas\Online\JsModule\online_booking.js" />
+    <Content Include="Areas\Online\JsModule\online_ConfirmAppointment.js" />
+    <Content Include="Areas\Online\JsModule\online_ConfirmPackage.js" />
+    <Content Include="Areas\Online\JsModule\online_payDoctorApp.js" />
+    <Content Include="Areas\Online\JsModule\online_payPackage.js" />
+    <Content Include="Areas\Online\JsModule\VitalReport.js" />
+    <Content Include="Areas\Pharmacy\JsModule\BySaltName.js" />
+    <Content Include="Areas\Pharmacy\JsModule\CommissionReport.js" />
+    <Content Include="Areas\Pharmacy\JsModule\NewOrder.js" />
+    <Content Include="Areas\Pharmacy\JsModule\NotRepeatedOrder.js" />
+    <Content Include="Areas\Pharmacy\JsModule\OnlineOrderRequest.js" />
+    <Content Include="Areas\Pharmacy\JsModule\OrderReport.js" />
+    <Content Include="Areas\Pharmacy\JsModule\ProductHelp.js" />
+    <Content Include="Areas\Pharmacy\JsModule\ProductInfo.js" />
+    <Content Include="Areas\Pharmacy\JsModule\RepeatOrder.js" />
+    <Content Include="Areas\Pharmacy\JsModule\SalesByStaff.js" />
+    <Content Include="Areas\Pharmacy\JsModule\TeleCaller.js" />
+    <Content Include="Areas\Pharmacy\JsModule\TPA.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\Accordian.css" />
+    <Content Include="Content\css\admin-responsive.css" />
+    <Content Include="Content\css\admin.css" />
+    <Content Include="Content\css\AdminLTE.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\component.css" />
+    <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\element.css" />
+    <Content Include="Content\css\fix-table.css" />
+    <Content Include="Content\css\helper.css" />
+    <Content Include="Content\css\MenuMaster.css" />
+    <Content Include="Content\css\Order.css" />
+    <Content Include="Content\css\print.css" />
+    <Content Include="Content\css\PrintBatchNo.css" />
+    <Content Include="Content\css\printGoodsReturn.css" />
+    <Content Include="Content\css\responsive-elements.css" />
+    <Content Include="Content\css\select2.css" />
+    <Content Include="Content\css\TableFix.css" />
+    <Content Include="Content\css\Transfer.css" />
+    <Content Include="Content\css\widgets.css" />
+    <Content Include="Content\dist\css\bootstrap-multiselect.css" />
+    <Content Include="Content\dist\js\bootstrap-multiselect.js" />
+    <Content Include="Content\fonts\css\font-awesome.css" />
+    <Content Include="Content\fonts\css\font-awesome.min.css" />
+    <Content Include="Content\fonts\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\HELP-US-OUT.txt" />
+    <Content Include="Content\icons\elusive\elusive.css" />
+    <Content Include="Content\icons\elusive\elusivedcfb.svg" />
+    <Content Include="Content\icons\fontawesome\fontawesome-webfontba72.svg" />
+    <Content Include="Content\icons\fontawesome\fontawesome.css" />
+    <Content Include="Content\icons\iconic\iconic.css" />
+    <Content Include="Content\icons\iconic\iconic56de.svg" />
+    <Content Include="Content\icons\linecons\linecons.css" />
+    <Content Include="Content\icons\linecons\linecons8f44.svg" />
+    <Content Include="Content\icons\meteocons\meteocons.css" />
+    <Content Include="Content\icons\meteocons\meteocons63ae.svg" />
+    <Content Include="Content\icons\spinnericon\spinnericon.css" />
+    <Content Include="Content\icons\spinnericon\spinnericonb7a7.svg" />
+    <Content Include="Content\icons\typicons\typicons.css" />
+    <Content Include="Content\icons\typicons\typiconsfb26.svg" />
+    <Content Include="Content\js-core\d3.js" />
+    <Content Include="Content\js-core\jquery-cookie.js" />
+    <Content Include="Content\js-core\jquery-core.js" />
+    <Content Include="Content\js-core\jquery-ui-core.js" />
+    <Content Include="Content\js-core\jquery-ui-mouse.js" />
+    <Content Include="Content\js-core\jquery-ui-position.js" />
+    <Content Include="Content\js-core\jquery-ui-widget.js" />
+    <Content Include="Content\js-core\modernizr.js" />
+    <Content Include="Content\js-core\raphael.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\contentbox.js" />
+    <Content Include="Content\js\inputswitch-alt.js" />
+    <Content Include="Content\js\jquery-ui.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\layout.js" />
+    <Content Include="Content\js\overlay.js" />
+    <Content Include="Content\js\progressbar.js" />
+    <Content Include="Content\js\screenfull.js" />
+    <Content Include="Content\js\select2.js" />
+    <Content Include="Content\js\slidebars.js" />
+    <Content Include="Content\js\slimscroll.js" />
+    <Content Include="Content\js\Smooth.js" />
+    <Content Include="Content\js\superclick.js" />
+    <Content Include="Content\js\tableHeadFixer.js" />
+    <Content Include="Content\js\widgets-init.js" />
+    <Content Include="Content\logo\admin.png" />
+    <Content Include="Content\logo\bg.jpg" />
+    <Content Include="Content\logo\ChandanLogo.jpg" />
+    <Content Include="Content\logo\gear.gif" />
+    <Content Include="Content\logo\logo.png" />
+    <Content Include="Content\logo\rx.png" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="images\ChandanLogo.jpg" />
+    <Content Include="images\full_screen.png" />
+    <Content Include="images\gear.gif" />
+    <Content Include="images\hand.png" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\login_bg.jpg" />
+    <Content Include="images\PatientIcon.png" />
+    <Content Include="images\right-arrow.png" />
+    <Content Include="images\right.png" />
+    <Content Include="images\test.jpg" />
+    <Content Include="JsModule\Authentication.js" />
+    <Content Include="JsModule\config.js" />
+    <Content Include="JsModule\FileSaver.min.js" />
+    <Content Include="JsModule\global.js" />
+    <Content Include="JsModule\mdb.min.js" />
+    <Content Include="JsModule\moment.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Pharmacy\Views\Pharmacy\ProductHelp.cshtml" />
+    <Content Include="Areas\Pharmacy\Views\Pharmacy\OnlineOrderRequest.cshtml" />
+    <Content Include="Areas\Diagnostic\Views\web.config" />
+    <Content Include="Areas\Pharmacy\Views\Pharmacy\justdial.cshtml" />
+    <Content Include="Areas\Pharmacy\Views\Pharmacy\OrderReport.cshtml" />
+    <Content Include="Areas\Pharmacy\Views\Analysis\SalesByStaff.cshtml" />
+    <Content Include="Areas\Pharmacy\Views\Analysis\NewOrder.cshtml" />
+    <Content Include="Areas\Pharmacy\Views\Analysis\RepeatOrder.cshtml" />
+    <Content Include="Areas\Pharmacy\Views\Analysis\NotRepeatedOrder.cshtml" />
+    <Content Include="Areas\Pharmacy\Views\Pharmacy\TeleCaller.cshtml" />
+    <Content Include="Areas\Pharmacy\Views\Pharmacy\ProductInfo.cshtml" />
+    <Content Include="Areas\Pharmacy\Views\Pharmacy\BySaltName.cshtml" />
+    <Content Include="Areas\Pharmacy\Views\Analysis\CommissionReport.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\APIProxy.cs" />
+    <Compile Include="App_Start\BarcodeGenerator.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\ApplicationResource\ApplicationResourceAreaRegistration.cs" />
+    <Compile Include="Areas\ApplicationResource\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Diagnostic\DiagnosticAreaRegistration.cs" />
+    <Compile Include="Areas\Hospital\HospitalAreaRegistration.cs" />
+    <Compile Include="Areas\Master\Controllers\CPOEController.cs" />
+    <Compile Include="Areas\Master\Controllers\DoctorController.cs" />
+    <Compile Include="Areas\Master\Controllers\RoomAndBedController.cs" />
+    <Compile Include="Areas\Master\MasterAreaRegistration.cs" />
+    <Compile Include="Areas\Online\Controllers\OnlineController.cs" />
+    <Compile Include="Areas\Online\Models\ipPayU.cs" />
+    <Compile Include="Areas\Online\OnlineAreaRegistration.cs" />
+    <Compile Include="Areas\Pharmacy\Controllers\AnalysisController.cs" />
+    <Compile Include="Areas\Pharmacy\Controllers\PharmacyController.cs" />
+    <Compile Include="Areas\Pharmacy\PharmacyAreaRegistration.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\HospitalConfig.cs" />
+    <Compile Include="Repository\PdfGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Areas\ApplicationResource\Views\web.config" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\Dashboard.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\Employee.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\EmployeeComponent.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\Login.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\MenuAllotment.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\Role.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\SubMenu.cshtml" />
+    <Content Include="Areas\Master\Views\web.config" />
+    <Content Include="Areas\Master\Views\CPOE\CPOETemplateItems.cshtml" />
+    <Content Include="Areas\Master\Views\Doctor\Registration.cshtml" />
+    <Content Include="Areas\Master\Views\RoomAndBed\ListRoomAndBed.cshtml" />
+    <Content Include="Areas\Master\Views\RoomAndBed\RoomAndBed.cshtml" />
+    <Content Include="Areas\Online\Views\web.config" />
+    <Content Include="Areas\Online\Views\Online\AvailCoupon.cshtml" />
+    <Content Include="Areas\Online\Views\Online\BookingConfirmation.cshtml" />
+    <Content Include="Areas\Online\Views\Online\CovidPackageItems.cshtml" />
+    <Content Include="Areas\Online\Views\Online\DoctorCovidControl.cshtml" />
+    <Content Include="Areas\Online\Views\Online\doPayment.cshtml" />
+    <Content Include="Areas\Online\Views\Online\doPaymentPackage.cshtml" />
+    <Content Include="Areas\Online\Views\Online\PackageConfirmation.cshtml" />
+    <Content Include="Areas\Online\Views\Online\TestChart.cshtml" />
+    <Content Include="Areas\Online\Views\Shared\_layout.cshtml" />
+    <Content Include="Areas\Online\Views\Shared\_menu.cshtml" />
+    <Content Include="Content\ChandanTermsAndCondition.pdf" />
+    <Content Include="Content\dist\less\bootstrap-multiselect.less" />
+    <Content Include="Content\fonts\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\less\animated.less" />
+    <Content Include="Content\fonts\less\bordered-pulled.less" />
+    <Content Include="Content\fonts\less\core.less" />
+    <Content Include="Content\fonts\less\fixed-width.less" />
+    <Content Include="Content\fonts\less\font-awesome.less" />
+    <Content Include="Content\fonts\less\icons.less" />
+    <Content Include="Content\fonts\less\larger.less" />
+    <Content Include="Content\fonts\less\list.less" />
+    <Content Include="Content\fonts\less\mixins.less" />
+    <Content Include="Content\fonts\less\path.less" />
+    <Content Include="Content\fonts\less\rotated-flipped.less" />
+    <Content Include="Content\fonts\less\screen-reader.less" />
+    <Content Include="Content\fonts\less\stacked.less" />
+    <Content Include="Content\fonts\less\variables.less" />
+    <Content Include="Content\fonts\scss\font-awesome.scss" />
+    <Content Include="Content\fonts\scss\_animated.scss" />
+    <Content Include="Content\fonts\scss\_bordered-pulled.scss" />
+    <Content Include="Content\fonts\scss\_core.scss" />
+    <Content Include="Content\fonts\scss\_fixed-width.scss" />
+    <Content Include="Content\fonts\scss\_icons.scss" />
+    <Content Include="Content\fonts\scss\_larger.scss" />
+    <Content Include="Content\fonts\scss\_list.scss" />
+    <Content Include="Content\fonts\scss\_mixins.scss" />
+    <Content Include="Content\fonts\scss\_path.scss" />
+    <Content Include="Content\fonts\scss\_rotated-flipped.scss" />
+    <Content Include="Content\fonts\scss\_screen-reader.scss" />
+    <Content Include="Content\fonts\scss\_stacked.scss" />
+    <Content Include="Content\fonts\scss\_variables.scss" />
+    <Content Include="Content\icons\elusive\elusivedcfb.eot" />
+    <Content Include="Content\icons\elusive\elusivedcfb.ttf" />
+    <Content Include="Content\icons\elusive\elusivedcfb.woff" />
+    <Content Include="Content\icons\fontawesome\fontawesome-webfontba72.eot" />
+    <Content Include="Content\icons\fontawesome\fontawesome-webfontba72.ttf" />
+    <Content Include="Content\icons\fontawesome\fontawesome-webfontba72.woff" />
+    <Content Include="Content\icons\fontawesome\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\icons\iconic\iconic56de.eot" />
+    <Content Include="Content\icons\iconic\iconic56de.ttf" />
+    <Content Include="Content\icons\iconic\iconic56de.woff" />
+    <Content Include="Content\icons\linecons\linecons8f44.eot" />
+    <Content Include="Content\icons\linecons\linecons8f44.ttf" />
+    <Content Include="Content\icons\linecons\linecons8f44.woff" />
+    <Content Include="Content\icons\meteocons\meteocons63ae.eot" />
+    <Content Include="Content\icons\meteocons\meteocons63ae.ttf" />
+    <Content Include="Content\icons\meteocons\meteocons63ae.woff" />
+    <Content Include="Content\icons\spinnericon\spinnericonb7a7.eot" />
+    <Content Include="Content\icons\spinnericon\spinnericonb7a7.ttf" />
+    <Content Include="Content\icons\spinnericon\spinnericonb7a7.woff" />
+    <Content Include="Content\icons\typicons\typiconsfb26.eot" />
+    <Content Include="Content\icons\typicons\typiconsfb26.ttf" />
+    <Content Include="Content\icons\typicons\typiconsfb26.woff" />
+    <Content Include="Areas\Pharmacy\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Hospital\Views\web.config" />
+    <Content Include="Areas\Pharmacy\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Pharmacy\Views\Shared\_Layout.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\_layout.cshtml" />
+    <Content Include="Views\Shared\_header.cshtml" />
+    <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\Shared\_sidebar.cshtml" />
+    <Content Include="Views\Shared\_sidebar2.cshtml" />
+    <Content Include="Views\Shared\_topbar.cshtml" />
+    <Content Include="Views\Shared\OPDPatientInfo.cshtml" />
+    <Content Include="Views\Shared\UploadDocumentInfo.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\ApplicationResource\Models\" />
+    <Folder Include="Areas\ApplicationResource\Views\Shared\" />
+    <Folder Include="Areas\Diagnostic\Controllers\" />
+    <Folder Include="Areas\Diagnostic\Models\" />
+    <Folder Include="Areas\Diagnostic\Views\Shared\" />
+    <Folder Include="Areas\Hospital\Controllers\" />
+    <Folder Include="Areas\Hospital\Models\" />
+    <Folder Include="Areas\Hospital\Views\Shared\" />
+    <Folder Include="Areas\Master\Models\" />
+    <Folder Include="Areas\Master\Views\Shared\" />
+    <Folder Include="Areas\Pharmacy\Models\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Crm_Api\Crm_Api.csproj">
+      <Project>{45382582-a7b9-4cad-86e6-fb4b9ba9c8ff}</Project>
+      <Name>Crm_Api</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60798</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60798/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
